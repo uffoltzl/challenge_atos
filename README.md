@@ -4,3 +4,10 @@ This is an international student competition dedicated to technological innovati
 
 Our solution: With our application, companies will have the possibility to book workspaces near the house of their employees in order to facilitate remote working. 
 
+## Launch the application
+
+```
+cd greemote
+npm i
+npm start
+```
