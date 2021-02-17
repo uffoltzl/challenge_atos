@@ -2,6 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 import EcoIcon from '@material-ui/icons/Eco';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -51,6 +59,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleLogin = () => {
+        window.location.href = "/employee";
+    }
 
     return (
         <div className={classes.root} >
@@ -63,6 +86,46 @@ export default function Home() {
                 <Typography variant="h4" component="h4" className={classes.textUpper2} >
                   In respect with the environment
                 </Typography>
+                <Button variant="contained" size="large" onClick={handleClickOpen}>
+                  Login
+                </Button>
+                <Dialog
+                    fullScreen={fullScreen}
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">{"Login"}</DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            id="enter_login"
+                            label="Login"
+                            fullWidth
+                            onInput = {(e) =>{
+                                e.target.value = e.target.value.slice(0,10)
+                            }}
+                        />
+                        <TextField
+                            autoFocus
+                            id="enter_pwd"
+                            label="Password"
+                            type="password"
+                            fullWidth
+                            onInput = {(e) =>{
+                                e.target.value = e.target.value.slice(0,10)
+                            }}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button autoFocus onClick={handleClose} variant="outlined" color="secondary">
+                            Sign Up
+                        </Button>
+                        <Button onClick={handleLogin} variant="outlined" color="secondary" autoFocus>
+                            Sign In
+                        </Button>
+                    </DialogActions>
+                </Dialog>
                </div>
             </div>
             <div className={classes.down}>
