@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 
 import Home from './Home';
+import Colors from '../Colors';
 
 import Logo from '../images/greemote_profil_pic.png';
 import Work from './Work';
@@ -51,12 +52,12 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#E9D4B7",
+    backgroundColor: Colors.LightBrown,
     height: "100vh",
   },
   header: {
-    backgroundColor: "#80604D",
-    color: "#E9D4B7"
+    backgroundColor: Colors.DarkBrown,
+    color: Colors.LightBrown
   },
   logo: {
       margin: 10,

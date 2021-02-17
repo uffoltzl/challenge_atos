@@ -21,6 +21,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 
 import bck from "../images/greemote_bck_pic.png";
+import Colors from '../Colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     upper: {
         height: "320px",
-        color: "#EEECE5",
+        color: Colors.NaturalWhite,
     },
     pictureUpper: {
         position: "absolute",
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     },
     down: {
         width: "100%",
-        color: "#80604D",
+        color: Colors.DarkBrown,
     },
     icons: {
         fontSize: "50px",
