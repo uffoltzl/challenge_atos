@@ -10,6 +10,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import EcoIcon from '@material-ui/icons/Eco';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -60,8 +65,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [isSignUp, setIsSignUp] = React.useState(false);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const [actor, setActor] = React.useState('workspace');
+
+    const handleChangeRadio = (event) => {
+        setActor(event.target.value);
+      };
   
     const handleClickOpen = () => {
       setOpen(true);
@@ -69,10 +80,25 @@ export default function Home() {
 
     const handleClose = () => {
         setOpen(false);
+        setIsSignUp(false);
     };
 
     const handleLogin = () => {
         window.location.href = "/employee";
+    }
+
+    const handleSignUp = () => {
+        if(isSignUp){
+            if(actor === "workspace"){
+                window.location.href = "/workspace";
+            }
+            else {
+                window.location.href = "/employee";
+            }
+        }
+        else {
+            setIsSignUp(true);
+        }
     }
 
     return (
@@ -116,14 +142,27 @@ export default function Home() {
                                 e.target.value = e.target.value.slice(0,10)
                             }}
                         />
+                        {isSignUp ?
+                            <div>
+                                <FormControl component="fieldset" style={{margin: "10px"}}>
+                                    <FormLabel component="legend">You are:</FormLabel>
+                                    <RadioGroup aria-label="actor" name="actor" value={actor} onChange={handleChangeRadio}>
+                                        <FormControlLabel value="workspace" control={<Radio />} label="Workspace" />
+                                        <FormControlLabel value="employee" control={<Radio />} label="Employee" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </div> : null
+                        }
                     </DialogContent>
                     <DialogActions>
-                        <Button autoFocus onClick={handleClose} variant="outlined" color="secondary">
+                        <Button autoFocus onClick={handleSignUp} variant="outlined" color="secondary">
                             Sign Up
                         </Button>
-                        <Button onClick={handleLogin} variant="outlined" color="secondary" autoFocus>
-                            Sign In
-                        </Button>
+                        {isSignUp ? null :
+                            <Button onClick={handleLogin} variant="outlined" color="secondary" autoFocus>
+                                Sign In
+                            </Button>
+                        }
                     </DialogActions>
                 </Dialog>
                </div>
