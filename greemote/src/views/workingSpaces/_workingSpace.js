@@ -1,30 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-import Grid from '@material-ui/core/Grid';
-import HomeIcon from '@material-ui/icons/Home';
-import IconButton from '@material-ui/core/IconButton';
 
-import Colors from '../Colors';
+import { Grid } from '@material-ui/core';
 
-import Logo from '../images/greemote_profil_pic.png';
+import Colors from '../../static/Colors';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		backgroundColor: Colors.LightBrown,
-		height: '100vh'
+		backgroundColor: Colors.LightBrown
 	},
 	header: {
 		backgroundColor: Colors.DarkBrown,
 		color: Colors.LightBrown
 	},
-	logo: {
-		margin: 10
-	},
-	iconbutton: {
-		margin: 5
-	},
+
 	block: {
 		borderWidth: '2px',
 		borderStyle: 'solid',
@@ -42,18 +31,6 @@ export default function WorkingSpace() {
 
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" className={classes.header}>
-				<Grid container spacing={0}>
-					<Grid item>
-						<Avatar className={classes.logo} alt="Logo" src={Logo} />
-					</Grid>
-					<Grid item>
-						<IconButton className={classes.iconbutton}>
-							<HomeIcon />
-						</IconButton>
-					</Grid>
-				</Grid>
-			</AppBar>
 			<Grid
 				container
 				spacing={0}

@@ -25,8 +25,8 @@ import EcoIcon from '@material-ui/icons/Eco';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 
-import bck from '../images/greemote_bck_pic.png';
-import Colors from '../Colors';
+import bck from '../static/images/greemote_bck_pic.png';
+import Colors from '../static/Colors';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -77,7 +77,7 @@ function AuthDialog({ open, onClose }) {
 	const [ role, setRole ] = useState('workspace');
 
 	function handleClick() {
-		history.push('/workingSpaces');
+		history.push('/working-spaces');
 	}
 
 	function handleClose() {
