@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	logo: {
 		margin: 5,
-		height: 70,
-		width: 70
+		height: 50,
+		width: 50
 	},
 	iconbutton: {
 		margin: 5

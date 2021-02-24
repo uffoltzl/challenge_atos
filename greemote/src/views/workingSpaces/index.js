@@ -65,7 +65,7 @@ function WorkingSpaces() {
 	const zoom = 13;
 
 	return (
-		<div style={{ height: '95vh' }}>
+		<div style={{ height: '85vh' }}>
 			<GoogleMap center={center} zoom={zoom}>
 				{WorkingSpacesPoints.map((workingSpace) => (
 					<Marker

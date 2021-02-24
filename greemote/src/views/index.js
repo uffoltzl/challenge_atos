@@ -30,11 +30,14 @@ import Colors from '../static/Colors';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		// backgroundColor: Colors.LightBrown,
-		height: '100%',
+		position: 'absolute',
+		backgroundColor: Colors.LightBrown,
+		height: '100vh',
 		margin: '0',
 		padding: '0',
-		textAlign: 'center'
+		textAlign: 'center',
+		width: '100%',
+		zIndex: -2
 	},
 	upper: {
 		height: '320px',
@@ -51,10 +54,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	textGroupUpper: {
 		padding: '40px',
-		opacity: '1'
+		opacity: '1',
 	},
 	textUpper1: {
-		textShadow: '2px 2px 8px black'
+		textShadow: '2px 2px 8px black',
 	},
 	textUpper2: {
 		fontFamily: 'Brush Script MT, Brush Script Std, cursive',
@@ -63,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
 	down: {
 		width: '100%',
 		color: Colors.DarkBrown
+	},
+	spaceElement: {
+		padding: "20px"
 	},
 	icons: {
 		fontSize: '50px'
@@ -75,12 +81,23 @@ function AuthDialog({ open, onClose }) {
 	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 	const [ role, setRole ] = useState('workspace');
+	const [ isSignUp, setIsSignUp ] = useState(false);
 
 	function handleClick() {
 		history.push('/working-spaces');
 	}
 
+	function handleClickSignUp() {
+		if(isSignUp){
+			history.push('/working-spaces');
+		}
+		else {
+			setIsSignUp(true);
+		}
+	}
+
 	function handleClose() {
+		setIsSignUp(false);
 		onClose();
 	}
 
@@ -91,6 +108,7 @@ function AuthDialog({ open, onClose }) {
 				<TextField autoFocus id="enter_login" label="Login" fullWidth />
 				<TextField autoFocus id="enter_pwd" label="Password" type="password" fullWidth />
 
+				{ isSignUp ? 
 				<FormControl component="fieldset" style={{ margin: '10px' }}>
 					<FormLabel component="legend">You are:</FormLabel>
 					<RadioGroup
@@ -102,16 +120,17 @@ function AuthDialog({ open, onClose }) {
 						<FormControlLabel value="workspace" control={<Radio />} label="Workspace manager" />
 						<FormControlLabel value="employee" control={<Radio />} label="Employee" />
 					</RadioGroup>
-				</FormControl>
+				</FormControl> : null }
 			</DialogContent>
 			<DialogActions>
-				<Button autoFocus onClick={handleClick} variant="outlined" color="secondary">
+				<Button autoFocus onClick={handleClickSignUp} variant="outlined" color="secondary">
 					Sign Up
 				</Button>
 
+				{ isSignUp ? null : 
 				<Button onClick={handleClick} variant="outlined" color="secondary" autoFocus>
 					Sign In
-				</Button>
+				</Button> }
 			</DialogActions>
 		</Dialog>
 	);
@@ -151,20 +170,20 @@ function Home() {
 				</div>
 			</div>
 			<div className={classes.down}>
-				<Grid container alignContent="center" justify="center" spacing={4}>
-					<Grid item xs={3}>
+				<Grid container alignContent="center" justify="center" spacing={0}>
+					<Grid item xs={3} className={classes.spaceElement} >
 						<WorkOutlineIcon className={classes.icons} />
 						<Typography variant="body2">
 							Work in a space dedicated environment, where efficiency is a key element.
 						</Typography>
 					</Grid>
-					<Grid item xs={3}>
+					<Grid item xs={3} className={classes.spaceElement} >
 						<EcoIcon className={classes.icons} />
 						<Typography variant="body2">
 							Work in a space near your domicile, in order to reduce your carbon emissions.
 						</Typography>
 					</Grid>
-					<Grid item xs={3}>
+					<Grid item xs={3} className={classes.spaceElement} >
 						<AttachMoneyIcon className={classes.icons} />
 						<Typography variant="body2">Work at lower cost, in a space booked last minute.</Typography>
 					</Grid>
