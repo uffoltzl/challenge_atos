@@ -6,7 +6,8 @@ import Colors from '../static/Colors';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		backgroundColor: Colors.LightBrown
+		backgroundColor: Colors.LightBrown,
+		height: "100vh"
 	}
 }));
 

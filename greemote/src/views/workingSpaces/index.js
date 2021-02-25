@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import GoogleMap from 'google-map-react';
 import Colors from '../../static/Colors';
 import WorkingSpacesPoints from '../../static/WorkingSpacesPoints';
+import users from '../../static/Users';
+import PROFILE from '../../static/Profiles';
 
 const K_HEIGHT = 30;
 
@@ -43,8 +45,7 @@ function Marker({ workingSpace }) {
 	};
 
 	const handleClick = () => {
-		console.log('ok');
-		history.push('/working-spaces/' + workingSpace.id);
+		// history.push('/working-spaces/' + workingSpace.id);
 		// GOTO page de la salle associée
 	};
 
@@ -61,18 +62,33 @@ function Marker({ workingSpace }) {
 }
 
 function WorkingSpaces() {
-	const center = [ 48.856614, 2.3522219 ];
+	const history = useHistory();
+
+	var center;
+	const userId = localStorage.getItem("userId");
+	if(userId === undefined || userId === null){
+		center = [ 48.8566, 2.3522 ];
+	}
+	else {
+		const id = parseInt(userId);
+		if(users[id].role.type === PROFILE.WORKSPACE){
+			center = [ 48.8566, 2.3522 ];
+		}
+		else {
+			center = users[id].role.address;
+		}
+	}
 	const zoom = 13;
 
 	return (
 		<div style={{ height: '85vh' }}>
 			<GoogleMap center={center} zoom={zoom}>
-				{WorkingSpacesPoints.map((workingSpace) => (
+				{Object.keys(WorkingSpacesPoints).map((workingSpaceId) => (
 					<Marker
-						key={workingSpace.id}
-						lat={workingSpace.lat}
-						lng={workingSpace.lng}
-						workingSpace={workingSpace}
+						key={workingSpaceId}
+						lat={WorkingSpacesPoints[workingSpaceId].lat}
+						lng={WorkingSpacesPoints[workingSpaceId].lng}
+						workingSpace={WorkingSpacesPoints[workingSpaceId]}
 					/>
 				))}
 			</GoogleMap>

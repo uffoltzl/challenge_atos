@@ -28,6 +28,7 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import bck from '../static/images/greemote_bck_pic.png';
 import Colors from '../static/Colors';
 import users from '../static/Users';
+import PROFILE from '../static/Profiles';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -99,15 +100,28 @@ function AuthDialog({ open, onClose }) {
 
 	function handleClick() {
 		var found = false;
-		for(var i in users) {
+		var i;
+		for(i in users) {
 			const user = users[i];
 			if (user.login === login && user.pwd === pwd){
 				found = true;
 				break;
 			}
 		}
-		if(found) history.push('/working-spaces');
-		else setError(true);
+		if(found) {
+			localStorage.setItem('userId', i);
+			if(users[i].role.type === PROFILE.EMPLOYEE){
+				history.push('/working-spaces');
+			}
+			else {
+				const workspaceId = users[i].role.space_id;
+				localStorage.setItem('workspaceId', workspaceId);
+				history.push('/working-spaces/' + workspaceId);
+			}
+		}
+		else {
+			setError(true);
+		}
 	}
 
 	function handleClickSignUp() {

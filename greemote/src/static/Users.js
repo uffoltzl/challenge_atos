@@ -1,7 +1,7 @@
 import PROFILE from './Profiles';
 
-const users = [
-	{
+const users = {
+	1: {
 		id: 1,
 		login: 'lucie',
 		pwd: 'mdp',
@@ -10,7 +10,7 @@ const users = [
             space_id: 1,
         }
 	},
-	{
+	2: {
 		id: 2,
 		login: 'louis',
 		pwd: 'mdp',
@@ -19,6 +19,6 @@ const users = [
             address: [ 48.856627, 2.337758102615535 ]
         }
 	}
-];
+};
 
 export default users;
