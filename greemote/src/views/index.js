@@ -27,6 +27,7 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 
 import bck from '../static/images/greemote_bck_pic.png';
 import Colors from '../static/Colors';
+import users from '../static/Users';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -80,11 +81,33 @@ function AuthDialog({ open, onClose }) {
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const [ login, setLogin ] = useState('');
+	const [ pwd, setPwd ] = useState('');
 	const [ role, setRole ] = useState('workspace');
 	const [ isSignUp, setIsSignUp ] = useState(false);
+	const [ error, setError ] = useState(false);
+
+	function updateLogin(event){
+		setError(false);
+		setLogin(event.target.value);
+	}
+
+	function updatePwd(event){
+		setError(false);
+		setPwd(event.target.value);
+	}
 
 	function handleClick() {
-		history.push('/working-spaces');
+		var found = false;
+		for(var i in users) {
+			const user = users[i];
+			if (user.login === login && user.pwd === pwd){
+				found = true;
+				break;
+			}
+		}
+		if(found) history.push('/working-spaces');
+		else setError(true);
 	}
 
 	function handleClickSignUp() {
@@ -105,8 +128,9 @@ function AuthDialog({ open, onClose }) {
 		<Dialog fullScreen={fullScreen} open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
 			<DialogTitle id="responsive-dialog-title">{'Login'}</DialogTitle>
 			<DialogContent>
-				<TextField autoFocus id="enter_login" label="Login" fullWidth />
-				<TextField autoFocus id="enter_pwd" label="Password" type="password" fullWidth />
+				{ error ? <Typography style={{color: "red"}}>Verify your login and password</Typography> : null }
+				<TextField autoFocus id="enter_login" label="Login" fullWidth onChange={updateLogin} error={error} />
+				<TextField autoFocus id="enter_pwd" label="Password" type="password" fullWidth onChange={updatePwd} error={error} />
 
 				{ isSignUp ? 
 				<FormControl component="fieldset" style={{ margin: '10px' }}>
