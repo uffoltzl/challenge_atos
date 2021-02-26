@@ -67,12 +67,12 @@ function WorkingSpaces() {
 	var center;
 	const userId = localStorage.getItem("userId");
 	if(userId === undefined || userId === null){
-		center = [ 48.8566, 2.3522 ];
+		return null;
 	}
 	else {
 		const id = parseInt(userId);
 		if(users[id].role.type === PROFILE.WORKSPACE){
-			center = [ 48.8566, 2.3522 ];
+			return null;
 		}
 		else {
 			center = users[id].role.address;
