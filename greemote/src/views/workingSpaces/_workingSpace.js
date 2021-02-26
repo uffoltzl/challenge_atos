@@ -20,6 +20,7 @@ import Colors from '../../static/Colors';
 import workspaces from '../../static/WorkingSpacesPoints';
 import reservations from '../../static/Reservations';
 import users from '../../static/Users';
+import Graph from '../../components/layouts/Graph';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -153,11 +154,7 @@ export default function WorkingSpace() {
 				</Grid>
 				<Grid item xs={5}>
 				<Card className={classes.card} >
-						<CardContent>
-							<Typography className={classes.title} gutterBottom>
-          						Graphs
-        					</Typography>
-						</CardContent>
+						<Graph workspaceId={workspaceId} />
 					</Card>
 				</Grid>
 			</Grid>
