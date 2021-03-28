@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "greemote/build",
+    "public": "flutter_app/build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
