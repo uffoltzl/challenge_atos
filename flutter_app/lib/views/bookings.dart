@@ -38,7 +38,7 @@ class Bookings extends StatelessWidget {
               Text(
                 date.toString(),
                 style: TextStyle(
-                    color: Colors.blue,
+                    color: Colors.brown,
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
               ),
@@ -57,8 +57,8 @@ class Bookings extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   gradient: LinearGradient(colors: [
-                    Colors.blue.withOpacity(1),
-                    Colors.blue.withOpacity(.6),
+                    Colors.brown.withOpacity(.9),
+                    Colors.brown.withOpacity(.8),
                   ])),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

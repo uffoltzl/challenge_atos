@@ -7,12 +7,12 @@ class Login extends StatelessWidget {
   static const String route = 'auth/login';
 
   static const String primary = "#cbbcb2";
-  // static const int primaryRed = 203;
-  // static const int primaryGreen = 188;
-  // static const int primaryBlue = 178;
-  static const int primaryRed = 143;
-  static const int primaryGreen = 148;
-  static const int primaryBlue = 251;
+  static const int primaryRed = 203;
+  static const int primaryGreen = 188;
+  static const int primaryBlue = 178;
+  // static const int primaryRed = 143;
+  // static const int primaryGreen = 148;
+  // static const int primaryBlue = 251;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,8 @@ class Login extends StatelessWidget {
                   height: 400,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/background.png'),
+                          image:
+                              AssetImage('assets/images/brown-background.png'),
                           fit: BoxFit.fill)),
                   child: Stack(
                     children: <Widget>[
@@ -92,8 +93,7 @@ class Login extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Color.fromRGBO(primaryRed,
-                                          primaryGreen, primaryBlue, .2),
+                                      color: Colors.brown.withOpacity(0.1),
                                       blurRadius: 20.0,
                                       offset: Offset(0, 10))
                                 ]),
@@ -136,10 +136,8 @@ class Login extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(
-                                      primaryRed, primaryGreen, primaryBlue, 1),
-                                  Color.fromRGBO(primaryRed, primaryGreen,
-                                      primaryBlue, .6),
+                                  Colors.brown.withOpacity(0.8),
+                                  Colors.brown.withOpacity(0.6),
                                 ])),
                             child: Center(
                                 child: TextButton(
@@ -159,9 +157,7 @@ class Login extends StatelessWidget {
                           1.5,
                           Text(
                             "Forgot Password?",
-                            style: TextStyle(
-                                color: Color.fromRGBO(
-                                    primaryRed, primaryGreen, primaryBlue, 1)),
+                            style: TextStyle(color: Colors.brown),
                           )),
                     ],
                   ),
