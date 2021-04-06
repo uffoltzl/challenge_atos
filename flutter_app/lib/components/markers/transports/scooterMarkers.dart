@@ -6,7 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 class ScooterMarker {
   static const icon = Icons.electric_scooter;
-  static const color = Colors.blue;
+  static const color = Colors.green;
   final Place place;
   ScooterMarker({this.place});
 

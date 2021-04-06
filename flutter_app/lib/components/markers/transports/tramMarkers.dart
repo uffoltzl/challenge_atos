@@ -6,7 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 class TramMarker {
   static const icon = Icons.tram;
-  static const color = Colors.blue;
+  static final color = Colors.yellow[800];
   final Place place;
   TramMarker({this.place});
 

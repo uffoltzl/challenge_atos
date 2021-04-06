@@ -6,7 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 class BusMarker {
   static const icon = Icons.directions_bus;
-  static const color = Colors.blue;
+  static const color = Colors.yellow;
   final Place place;
   BusMarker({this.place});
 
