@@ -14,7 +14,7 @@ class Layout extends StatefulWidget {
 
 /// This is the private State class that goes with Layout.
 class _LayoutState extends State<Layout> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
     Workspaces(),
