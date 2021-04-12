@@ -11,14 +11,14 @@ class WorkspaceMarker {
 
   WorkspaceMarker({this.workspace});
 
-  Marker widget(BuildContext context) {
+  Marker widget({BuildContext context, Function onClick}) {
     return Marker(
         width: 30.0,
         height: 30.0,
         point: LatLng(workspace.lat, workspace.lng),
         builder: (ctx) => Container(
                 child: RawMaterialButton(
-              onPressed: () {},
+              onPressed: () => onClick(workspace),
               elevation: 2.0,
               fillColor: color,
               child: Icon(
@@ -35,8 +35,8 @@ class WorkspaceMarkers {
 
   final List<Workspace> workspaces = API.workspaces;
 
-  Iterable<Marker> widgets(BuildContext context) {
-    return workspaces.map(
-        (workspace) => WorkspaceMarker(workspace: workspace).widget(context));
+  Iterable<Marker> widgets({BuildContext context, Function onClick}) {
+    return workspaces.map((workspace) => WorkspaceMarker(workspace: workspace)
+        .widget(context: context, onClick: onClick));
   }
 }

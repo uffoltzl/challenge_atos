@@ -1,5 +1,8 @@
 import 'package:flutter_app/models/place.dart';
 
 class Workspace extends Place {
-  const Workspace({name, lat, lng}) : super(name: name, lat: lat, lng: lng);
+  final String adresse;
+
+  const Workspace({name, lat, lng, this.adresse})
+      : super(name: name, lat: lat, lng: lng);
 }
