@@ -25,9 +25,6 @@ class WorkspacesPage extends StatefulWidget {
 
 class _WorkspacesPageState extends State<WorkspacesPage>
     with TickerProviderStateMixin {
-// class Workspaces extends StatelessWidget {
-  // const Workspaces({Key key}) : super(key: key);
-  //
   final controller = FloatingSearchBarController();
   LatLng center = API.currentUserLocation;
 
@@ -73,8 +70,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
     setState(() {
       center = new LatLng(workspace.lat, workspace.lng);
     });
-    _animatedMapMove(center, 14.0);
-    print(center);
+    _animatedMapMove(center, 13.0);
   }
 
   bool busVisible = false;
@@ -169,6 +165,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
   Widget buildSearchBar(BuildContext context) {
     return Consumer<SearchModel>(
       builder: (context, model, _) => FloatingSearchBar(
+        hint: 'Search...',
         progress: model.isLoading,
         automaticallyImplyBackButton: false,
         controller: controller,
@@ -184,6 +181,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
   }
 
   Widget buildSearchResult(BuildContext context) {
+    final model = Provider.of<SearchModel>(context, listen: false);
     return Consumer<SearchModel>(
         builder: (context, model, _) => ClipRRect(
               borderRadius: BorderRadius.circular(8),
@@ -197,6 +195,10 @@ class _WorkspacesPageState extends State<WorkspacesPage>
                           Workspace workspace =
                               model.suggestions.elementAt(index);
                           return ListTile(
+                              onTap: () {
+                                _handleWorkspaceClick(workspace);
+                                FloatingSearchBar.of(context).close();
+                              },
                               title: Text('${workspace.name}'),
                               subtitle: Text('${workspace.adresse}'));
                         })

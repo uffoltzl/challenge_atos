@@ -11,6 +11,9 @@ class SearchModel extends ChangeNotifier {
 
   String _query = '';
   String get query => _query;
+  void setQuery(String query) {
+    _query = query;
+  }
 
   void onQueryChanged(String query) async {
     if (query == _query) return;
