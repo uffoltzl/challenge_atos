@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/markers/transports/busMarkers.dart';
+import 'package:flutter_app/components/workspaces/StarsBar.dart';
 import 'package:flutter_app/data/api.dart';
 import 'package:flutter_app/models/workspace.dart';
 import 'package:flutter_app/views/workspaces/_workspaceId.dart';
@@ -77,25 +78,7 @@ class WorkspaceMarker {
                             Text(workspace.name,
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w200)),
-                            Row(
-                              children: [
-                                Text("4.8"),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                ...List.generate(
-                                    5,
-                                    (index) => Icon(
-                                          Icons.star,
-                                          size: 20,
-                                          color: Colors.amber,
-                                        )),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("(78)")
-                              ],
-                            ),
+                            StarsBar(),
                             Text(
                               workspace.adresse,
                               style: TextStyle(
