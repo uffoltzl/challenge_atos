@@ -100,6 +100,10 @@ class _ProfileState extends State<Profile> {
               title: Text("logout"),
               subtitle: Text("you can logout from here"),
               leading: Icon(Icons.exit_to_app),
+              onTap: () => {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, "/", ModalRoute.withName("/"))
+              },
             ),
           ),
         ],

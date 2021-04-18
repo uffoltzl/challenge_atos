@@ -20,8 +20,8 @@ class WorkspacePage extends StatelessWidget {
               children: workspace.images
                   .map((image) => Container(
                         width: 300.0,
-                        child: Image.asset(
-                          'images/office/$image',
+                        child: Image.network(
+                          image,
                           fit: BoxFit.fill,
                         ),
                       ))

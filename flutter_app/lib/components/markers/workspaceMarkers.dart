@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/markers/transports/busMarkers.dart';
 import 'package:flutter_app/data/api.dart';
 import 'package:flutter_app/models/workspace.dart';
 import 'package:flutter_app/views/workspaces/_workspaceId.dart';
@@ -12,51 +13,116 @@ class WorkspaceMarker {
 
   WorkspaceMarker({this.workspace});
 
+  Widget transportDuration({IconData icon, String label}) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          size: 20.0,
+          color: Colors.black.withOpacity(0.8),
+        ),
+        SizedBox(width: 7),
+        Text(label)
+      ],
+    );
+  }
+
   _showModalBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return Card(
-              clipBehavior: Clip.antiAlias,
+              // clipBehavior: Clip.antiAlias,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => WorkspacePage(
-                                workspace: workspace,
-                              )));
-                },
-                child: Column(
-                  children: [
-                    Image(
-                      // image: NetworkImage(
-                      //     'https://images.pexels.com/photos/2451616/pexels-photo-2451616.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'),
-                      image: AssetImage(
-                          'images/office/${workspace.images.elementAt(0)}'),
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes
-                                : null,
-                          ),
-                        );
-                      },
-                    ),
-                    // Image.asset('images/office/${workspace.images.elementAt(0)}'),
-                    ListTile(
-                      title: Text(workspace.name),
-                      subtitle: Text(
-                        workspace.adresse,
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                  ],
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => WorkspacePage(
+                            workspace: workspace,
+                          )));
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  child: Image(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(workspace.images.elementAt(0)),
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ));
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(workspace.name,
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w200)),
+                            Row(
+                              children: [
+                                Text("4.8"),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                ...List.generate(
+                                    5,
+                                    (index) => Icon(
+                                          Icons.star,
+                                          size: 20,
+                                          color: Colors.amber,
+                                        )),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text("(78)")
+                              ],
+                            ),
+                            Text(
+                              workspace.adresse,
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.6)),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            transportDuration(
+                                icon: Icons.pedal_bike,
+                                label: "4.5 km - 22 min"),
+                            transportDuration(
+                                icon: Icons.directions_walk,
+                                label: "4.2 km - 53 min"),
+                            transportDuration(
+                                icon: BusMarker.icon, label: "6.0 km - 42 min")
+                          ],
+                        )
+                      ]),
+                ),
+                SizedBox(
+                  height: 8,
+                )
+              ],
+            ),
+          ));
         });
   }
 
