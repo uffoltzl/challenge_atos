@@ -42,7 +42,7 @@ class _LayoutState extends State<Layout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Bookings',
+            label: 'My bookings',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),

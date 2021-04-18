@@ -1,5 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
+import 'package:flutter_app/data/workspaces.dart';
+import 'package:flutter_app/models/workspace.dart';
+
+final random = Random();
 
 class Bookings extends StatelessWidget {
   const Bookings({Key key}) : super(key: key);
@@ -7,26 +13,39 @@ class Bookings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(246, 248, 253, 1),
+      // Color.fromRGBO(246, 248, 253, 1)
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(20),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List<Widget>.generate(
-                30,
-                (index) => index.isEven
-                    ? SizedBox(
-                        height: 20,
-                      )
-                    : FadeAnimation(1 + index / 10, makeItem(date: index)),
-              )),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(
+              "My bookings",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            ...List<Widget>.generate(
+              30,
+              (index) {
+                if (index.isEven) {
+                  return SizedBox(
+                    height: 20,
+                  );
+                }
+
+                Workspace workspace =
+                    Workspaces.elementAt(random.nextInt(Workspaces.length - 1));
+                return FadeAnimation(1 + index / 10,
+                    makeItem(date: index.toString(), workspace: workspace));
+              },
+            )
+          ]),
         ),
       ),
     );
   }
 
-  Widget makeItem({date}) {
+  Widget makeItem({String date, Workspace workspace}) {
     return Row(
       children: <Widget>[
         Container(
@@ -51,7 +70,7 @@ class Bookings extends StatelessWidget {
         ),
         Expanded(
           child: Container(
-            height: 100,
+            height: 125,
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -65,11 +84,18 @@ class Bookings extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    "Espace numéro 1",
+                    workspace.name,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    workspace.adresse,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -84,8 +110,9 @@ class Bookings extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "14:00 - 18:00",
-                        style: TextStyle(color: Colors.white),
+                        "9:00 - 12:00 / 14:00 - 18:00",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       )
                     ],
                   )

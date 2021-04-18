@@ -10,7 +10,7 @@ import 'package:latlong/latlong.dart';
 class WorkspaceMarker {
   final Workspace workspace;
   static final icon = Icons.work;
-  static final color = Colors.brown[300];
+  static final color = Colors.brown;
 
   WorkspaceMarker({this.workspace});
 

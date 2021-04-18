@@ -8,7 +8,7 @@ class UserMarker {
   UserMarker();
 
   static LatLng currentUserLocation = API.currentUserLocation;
-  static final color = Colors.blue[800];
+  static final color = Colors.blue[600];
 
   Marker widget(BuildContext context) {
     return Marker(

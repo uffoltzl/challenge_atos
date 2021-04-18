@@ -30,6 +30,33 @@ class WorkspacePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: true, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Book a place'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  BarChartPricing.withSampleData(),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Book'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(workspace.name),
@@ -64,11 +91,18 @@ class WorkspacePage extends StatelessWidget {
                   StarsBar(),
                   Text(workspace.adresse),
                   // Pricing
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: BarChartPricing.withSampleData(),
+                  SizedBox(height: 10),
+                  SizedBox(
+                    width: double.infinity,
+                    child: new ElevatedButton(
+                        onPressed: _showMyDialog, child: Text('Book my place')),
                   ),
+                  SizedBox(height: 5),
+                  // Container(
+                  //   width: MediaQuery.of(context).size.width,
+                  //   height: 300,
+                  //   child: BarChartPricing.withSampleData(),
+                  // ),
                   // Transportations
                   SizedBox(
                     height: 10,
