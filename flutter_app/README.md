@@ -1,8 +1,10 @@
-# flutter_app
+# Greemote
+## Testing localy
+- [Chrome](https://flutter.dev/docs/get-started/web)
+- [Android](https://flutter.dev/docs/get-started/install)
+- [IOS](https://flutter.dev/docs/get-started/install/macos)
 
-A new Flutter project.
-
-## Getting Started
+## Getting Started with flutter
 
 This project is a starting point for a Flutter application.
 

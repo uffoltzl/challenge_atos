@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/markers/transports/busMarkers.dart';
 import 'package:flutter_app/components/workspaces/StarsBar.dart';
@@ -52,7 +54,8 @@ class WorkspaceMarker {
                   height: 200,
                   child: Image(
                     fit: BoxFit.fill,
-                    image: NetworkImage(workspace.images.elementAt(0)),
+                    image: NetworkImage(workspace.images.elementAt(
+                        Random().nextInt((workspace.images.length - 1)))),
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
                       return Center(

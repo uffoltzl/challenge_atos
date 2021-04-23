@@ -1,10 +1,11 @@
 import 'package:flutter_app/models/workspace.dart';
 
 const List<String> images = [
-  "https://unsplash.com/photos/VWcPlbHglYc/download?force=true&w=640",
-  "https://unsplash.com/photos/FV3GConVSss/download?force=true&w=640",
-  "https://unsplash.com/photos/DyFjxmHt3Es/download?force=true&w=640",
-  "https://unsplash.com/photos/wawEfYdpkag/download?force=true&w=640"
+  "https://firebasestorage.googleapis.com/v0/b/greemote-e86d7.appspot.com/o/images%2Fworkspace-01.jpg?alt=media&token=885d5eec-b386-48eb-8301-0a15f184aeee",
+  "https://firebasestorage.googleapis.com/v0/b/greemote-e86d7.appspot.com/o/images%2Fworkspace-02.jpg?alt=media&token=294626c3-2569-4149-9f51-9b5af8ec35c0",
+  "https://firebasestorage.googleapis.com/v0/b/greemote-e86d7.appspot.com/o/images%2Fworkspace-03.jpg?alt=media&token=271bb4aa-d71f-4802-bf53-5b3458737450",
+  "https://firebasestorage.googleapis.com/v0/b/greemote-e86d7.appspot.com/o/images%2Fworkspace-04.jpg?alt=media&token=529071bd-aa54-4e5c-97af-b3a9d8706fda",
+  "https://firebasestorage.googleapis.com/v0/b/greemote-e86d7.appspot.com/o/images%2Fworkspace-05.jpg?alt=media&token=0a75de6f-d2dd-4012-a82d-43bb2c865e30"
 ];
 
 const List<Workspace> Workspaces = [
