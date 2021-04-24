@@ -10,7 +10,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _emailNotification = true;
-  bool _pushNotification = false;
+  bool _pushNotification = true;
 
   void handleEmailNotificationChange(value) {
     setState(() {
@@ -35,7 +35,13 @@ class _ProfileState extends State<Profile> {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          const SizedBox(height: 20.0),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              "My profile",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+          ),
           FadeAnimation(
               0.5,
               ListTile(

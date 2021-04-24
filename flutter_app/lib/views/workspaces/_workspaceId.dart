@@ -50,12 +50,11 @@ class WorkspacePage extends StatelessWidget {
               ),
             ),
             actions: <Widget>[
-              TextButton(
-                child: Text('Book'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              ElevatedButton(
+                  child: Text('Book'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
             ],
           );
         },
@@ -199,7 +198,7 @@ class WorkspacePage extends StatelessWidget {
                               label: "Drink dispenser",
                             ),
                             listItem(
-                              icon: Icons.smoke_free,
+                              icon: Icons.smoking_rooms_rounded,
                               label: "Smoking area",
                             ),
                           ],

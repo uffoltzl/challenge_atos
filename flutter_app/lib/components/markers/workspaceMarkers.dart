@@ -35,7 +35,6 @@ class WorkspaceMarker {
         context: context,
         builder: (BuildContext context) {
           return Card(
-              // clipBehavior: Clip.antiAlias,
               child: InkWell(
             onTap: () {
               Navigator.push(
@@ -64,27 +63,6 @@ class WorkspaceMarker {
                         .toList(),
                   ),
                 ),
-                // Container(
-                //   width: MediaQuery.of(context).size.width,
-                //   height: 200,
-                //   child: Image(
-                //     fit: BoxFit.fill,
-                //     image: NetworkImage(workspace.images.elementAt(0
-                //         // Random().nextInt(workspace.images.length - 1)
-                //         )),
-                //     loadingBuilder: (context, child, loadingProgress) {
-                //       if (loadingProgress == null) return child;
-                //       return Center(
-                //         child: CircularProgressIndicator(
-                //           value: loadingProgress.expectedTotalBytes != null
-                //               ? loadingProgress.cumulativeBytesLoaded /
-                //                   loadingProgress.expectedTotalBytes
-                //               : null,
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -96,7 +74,7 @@ class WorkspaceMarker {
                           children: [
                             Text(workspace.name,
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w200)),
+                                    fontSize: 18, fontWeight: FontWeight.w500)),
                             StarsBar(),
                             Text(
                               workspace.adresse,

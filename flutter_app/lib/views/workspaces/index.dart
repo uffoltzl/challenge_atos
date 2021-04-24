@@ -70,7 +70,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
     setState(() {
       center = new LatLng(workspace.lat, workspace.lng);
     });
-    _animatedMapMove(center, 13.0);
+    _animatedMapMove(center, 14.0);
   }
 
   bool busVisible = false;

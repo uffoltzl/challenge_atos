@@ -135,24 +135,27 @@ class Login extends StatelessWidget {
                       ),
                       FadeAnimation(
                           2,
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Colors.brown.withOpacity(0.8),
-                                  Colors.brown.withOpacity(0.6),
-                                ])),
-                            child: Center(
-                                child: TextButton(
-                              onPressed: handleClick,
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )),
+                          GestureDetector(
+                            onTap: handleClick,
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.brown.withOpacity(0.8),
+                                    Colors.brown.withOpacity(0.6),
+                                  ])),
+                              child: Center(
+                                  child: TextButton(
+                                onPressed: handleClick,
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                            ),
                           )),
                       SizedBox(
                         height: 30,
