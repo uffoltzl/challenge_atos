@@ -69,6 +69,7 @@ class WorkspacePage extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              key: Key("workspace-images"),
               height: 160.0,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -90,6 +91,7 @@ class WorkspacePage extends StatelessWidget {
                 children: [
                   Text(
                     workspace.name,
+                    key: Key("workspace-name"),
                     style: TextStyle(fontSize: 24),
                   ),
                   StarsBar(),
@@ -99,7 +101,9 @@ class WorkspacePage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: new ElevatedButton(
-                        onPressed: _showMyDialog, child: Text('Book my place')),
+                        key: Key("booking-button"),
+                        onPressed: _showMyDialog,
+                        child: Text('Book my place')),
                   ),
                   SizedBox(
                     height: 10,

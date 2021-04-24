@@ -45,6 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
           FadeAnimation(
               0.5,
               ListTile(
+                key: Key("email"),
                 title: Text(
                   "atos.it@challenge.com",
                 ),

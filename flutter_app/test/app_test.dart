@@ -1,6 +1,7 @@
 import 'package:flutter_app/app.dart';
 import 'package:flutter_app/data/workspaces.dart';
 import 'package:flutter_app/views/bookings.dart';
+import 'package:flutter_app/views/workspaces/_workspaceId.dart';
 import 'package:flutter_app/views/workspaces/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,47 @@ void main() {
     expect(find.byKey(Key("flutter-map")), findsOneWidget);
   });
 
+  testWidgets('Workspace page', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: WorkspacePage(),
+    ));
+    await tester.pumpAndSettle(const Duration(seconds: 1));
+
+    //
+    // expect(find.byKey(Key("workspace-images")), findsOneWidget);
+    // expect(find.byKey(Key("workspace-name")), findsOneWidget);
+    // expect(find.byKey(Key("booking-button")), findsOneWidget);
+    // expect(find.text("Transportation"), findsOneWidget);
+    // expect(find.text("Advantage"), findsOneWidget);
+    // expect(find.text("About"), findsOneWidget);
+  });
+
   testWidgets('Bookings page', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+      body: BookingsPage(),
+    )));
+    await tester.pumpAndSettle(const Duration(seconds: 2));
+
+    expect(find.text("My bookings"), findsOneWidget);
+  });
+
+  testWidgets('Profile page', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
       home: Scaffold(
-        body: BookingsPage(),
+        body: ProfilePage(),
       ),
     ));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
-    expect(find.text("My bookings"), findsOneWidget);
+    // Check profile informations
+    expect(find.text("My profile"), findsOneWidget);
+    expect(find.byKey(Key("email")), findsOneWidget);
+    expect(find.text("notifications"), findsOneWidget);
+    expect(find.text("email notifications"), findsOneWidget);
+    expect(find.text("push notifications"), findsOneWidget);
+    expect(find.text("feedback"), findsOneWidget);
+    expect(find.text("terms and conditions"), findsOneWidget);
+    expect(find.text("logout"), findsOneWidget);
   });
 }
