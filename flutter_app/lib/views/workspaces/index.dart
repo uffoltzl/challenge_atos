@@ -165,6 +165,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
   Widget buildSearchBar(BuildContext context) {
     return Consumer<SearchModel>(
       builder: (context, model, _) => FloatingSearchBar(
+        key: Key("floating-search-bar"),
         hint: 'Search...',
         progress: model.isLoading,
         automaticallyImplyBackButton: false,
@@ -229,6 +230,7 @@ class _WorkspacesPageState extends State<WorkspacesPage>
     }
 
     return FlutterMap(
+      key: Key("flutter-map"),
       mapController: mapController,
       options: MapOptions(
         center: center,

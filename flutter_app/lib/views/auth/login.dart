@@ -10,9 +10,6 @@ class Login extends StatelessWidget {
   static const int primaryRed = 203;
   static const int primaryGreen = 188;
   static const int primaryBlue = 178;
-  // static const int primaryRed = 143;
-  // static const int primaryGreen = 148;
-  // static const int primaryBlue = 251;
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +103,7 @@ class Login extends StatelessWidget {
                                           bottom: BorderSide(
                                               color: Colors.grey[100]))),
                                   child: TextField(
+                                    key: Key("email-input"),
                                     keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
@@ -117,6 +115,7 @@ class Login extends StatelessWidget {
                                 Container(
                                   padding: EdgeInsets.all(8.0),
                                   child: TextField(
+                                    key: Key("password-input"),
                                     obscureText: true,
                                     enableSuggestions: false,
                                     autocorrect: false,
@@ -147,6 +146,7 @@ class Login extends StatelessWidget {
                                   ])),
                               child: Center(
                                   child: TextButton(
+                                key: Key("login-button"),
                                 onPressed: handleClick,
                                 child: Text(
                                   "Login",

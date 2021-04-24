@@ -7,13 +7,12 @@ import 'package:flutter_app/models/workspace.dart';
 
 final random = Random();
 
-class Bookings extends StatelessWidget {
-  const Bookings({Key key}) : super(key: key);
+class BookingsPage extends StatelessWidget {
+  const BookingsPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Color.fromRGBO(246, 248, 253, 1)
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(

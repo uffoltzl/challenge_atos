@@ -18,8 +18,8 @@ class _LayoutState extends State<Layout> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     WorkspacesPage(),
-    Bookings(),
-    Profile()
+    BookingsPage(),
+    ProfilePage()
   ];
 
   void _onItemTapped(int index) {

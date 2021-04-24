@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key key}) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfilePageState extends State<ProfilePage> {
   bool _emailNotification = true;
   bool _pushNotification = true;
 
