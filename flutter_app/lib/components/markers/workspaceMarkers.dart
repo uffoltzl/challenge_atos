@@ -50,25 +50,41 @@ class WorkspaceMarker {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: Image(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(workspace.images.elementAt(
-                        Random().nextInt((workspace.images.length - 1)))),
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes
-                              : null,
-                        ),
-                      );
-                    },
+                  height: 200.0,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: workspace.images
+                        .map((image) => Container(
+                              width: 300.0,
+                              child: Image.network(
+                                image,
+                                fit: BoxFit.fill,
+                              ),
+                            ))
+                        .toList(),
                   ),
                 ),
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //   height: 200,
+                //   child: Image(
+                //     fit: BoxFit.fill,
+                //     image: NetworkImage(workspace.images.elementAt(0
+                //         // Random().nextInt(workspace.images.length - 1)
+                //         )),
+                //     loadingBuilder: (context, child, loadingProgress) {
+                //       if (loadingProgress == null) return child;
+                //       return Center(
+                //         child: CircularProgressIndicator(
+                //           value: loadingProgress.expectedTotalBytes != null
+                //               ? loadingProgress.cumulativeBytesLoaded /
+                //                   loadingProgress.expectedTotalBytes
+                //               : null,
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

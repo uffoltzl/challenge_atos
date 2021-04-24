@@ -15,6 +15,10 @@ class SearchModel extends ChangeNotifier {
     _query = query;
   }
 
+  String stringToComparableString(String str) {
+    return str.trim().toLowerCase().replaceAll(" ", "").replaceAll(",", "");
+  }
+
   void onQueryChanged(String query) async {
     if (query == _query) return;
 
@@ -25,14 +29,11 @@ class SearchModel extends ChangeNotifier {
     if (query.isEmpty) {
       _suggestions = Workspaces;
     } else {
-      List<String> queries = query.split(" ");
+      String comparableQuery = stringToComparableString(query);
       _suggestions = Workspaces.where((workspace) =>
-          queries
-              .where((query) =>
-                  workspace.name.contains(query) ||
-                  workspace.adresse.contains(query))
-              .length >
-          0).toList();
+          stringToComparableString(workspace.name).contains(comparableQuery) ||
+          stringToComparableString(workspace.adresse)
+              .contains(comparableQuery)).toList();
     }
 
     _isLoading = false;

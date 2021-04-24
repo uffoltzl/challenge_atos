@@ -5,6 +5,6 @@
 # cd ..
 # firebase deploy
 cd flutter_app
-flutter build web
+flutter build web --web-renderer=html
 cd ..
 firebase deploy

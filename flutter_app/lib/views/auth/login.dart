@@ -27,7 +27,7 @@ class Login extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 350,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image:
@@ -106,6 +106,7 @@ class Login extends StatelessWidget {
                                           bottom: BorderSide(
                                               color: Colors.grey[100]))),
                                   child: TextField(
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "Email",
@@ -116,6 +117,9 @@ class Login extends StatelessWidget {
                                 Container(
                                   padding: EdgeInsets.all(8.0),
                                   child: TextField(
+                                    obscureText: true,
+                                    enableSuggestions: false,
+                                    autocorrect: false,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "Password",
@@ -151,7 +155,7 @@ class Login extends StatelessWidget {
                             )),
                           )),
                       SizedBox(
-                        height: 70,
+                        height: 30,
                       ),
                       FadeAnimation(
                           1.5,

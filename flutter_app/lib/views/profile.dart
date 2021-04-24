@@ -37,7 +37,7 @@ class _ProfileState extends State<Profile> {
         children: [
           const SizedBox(height: 20.0),
           FadeAnimation(
-              1,
+              0.5,
               ListTile(
                 title: Text(
                   "atos.it@challenge.com",
@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
               )),
           _buildDivider(),
           FadeAnimation(
-            1.1,
+            0.5 + 0.1,
             ListTile(
               title: Text(
                 "notifications",
@@ -56,7 +56,7 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           FadeAnimation(
-            1.2,
+            0.5 + 0.2,
             SwitchListTile(
               value: _emailNotification,
               title: Text("email notifications"),
@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           FadeAnimation(
-            1.3,
+            0.5 + 0.3,
             SwitchListTile(
               value: _pushNotification,
               title: Text("push notifications"),
@@ -79,7 +79,7 @@ class _ProfileState extends State<Profile> {
           ),
           _buildDivider(),
           FadeAnimation(
-            1.4,
+            0.5 + 0.4,
             ListTile(
               title: Text("feedback"),
               subtitle: Text("we would love to hear your experience"),
@@ -87,7 +87,7 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           FadeAnimation(
-            1.5,
+            0.5 + 0.5,
             ListTile(
               title: Text("terms and conditions"),
               subtitle: Text("legal, terms and conditions"),
@@ -95,7 +95,7 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           FadeAnimation(
-            1.6,
+            0.5 + 0.6,
             ListTile(
               title: Text("logout"),
               subtitle: Text("you can logout from here"),
