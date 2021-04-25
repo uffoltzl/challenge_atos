@@ -1,4 +1,9 @@
 # Greemote
+
+## Architecture
+- `/lib` - Library package folder
+- `/test` - Testing folder 
+
 ## Testing localy
 - [Chrome](https://flutter.dev/docs/get-started/web)
 - [Android](https://flutter.dev/docs/get-started/install)

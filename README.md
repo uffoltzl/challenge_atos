@@ -7,7 +7,14 @@ Our solution: With our application, companies will have the possibility to book 
 ## Launch the application
 
 ```
-cd greemote
-npm i
-npm start
+cd flutter_app
+flutter pub get
+flutter run -d chrome --web-renderer=html
+```
+
+## Launch all the tests
+
+```
+cd flutter_app
+flutter test
 ```
